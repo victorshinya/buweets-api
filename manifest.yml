@@ -1,0 +1,9 @@
+---
+  applications:
+    - name: buweets
+      memory: 128M
+      instances: 1
+      buildbacks:
+        - go_buildpack
+      env:
+        GOPACKAGENAME: github.com/victorshinya/buweets-api
