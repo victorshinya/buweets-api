@@ -8,6 +8,7 @@ require (
 	github.com/go-openapi/errors v0.19.2 // indirect
 	github.com/go-openapi/strfmt v0.17.2 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
+	github.com/gorilla/mux v1.7.3
 	github.com/joho/godotenv v1.3.0
 	github.com/mailru/easyjson v0.7.0 // indirect
 	github.com/watson-developer-cloud/go-sdk v1.0.0

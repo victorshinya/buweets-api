@@ -2,17 +2,21 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 
+	"github.com/gorilla/mux"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/victorshinya/buweets-api/handler"
 )
 
 func main() {
-	http.HandleFunc("/api/get-emotion", handler.GetEmotion)
+	router := mux.NewRouter()
+	s := router.PathPrefix("/api").Subrouter()
+	s.HandleFunc("/get-emotion", handler.GetEmotion).Methods(http.MethodGet)
 
 	port := os.Getenv("PORT")
 	fmt.Printf(`Server is up and running at port %s`, port)
-	http.ListenAndServe(":"+port, nil)
+	log.Fatal(http.ListenAndServe(":"+port, s))
 }
