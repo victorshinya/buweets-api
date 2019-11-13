@@ -43,6 +43,11 @@ func GetEmotion(w http.ResponseWriter, r *http.Request) {
 		ModelID: core.StringPtr("pt-en"),
 	})
 
+	if err != nil {
+		json.NewEncoder(w).Encode(map[string]string{"error": "Fail to extract the translation from your text. Try again later."})
+		return
+	}
+
 	if len(languageTranslatorResult.Translations) == 0 {
 		json.NewEncoder(w).Encode(map[string]string{"error": "No translation found. Try again later."})
 		return
